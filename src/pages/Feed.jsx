@@ -1,7 +1,13 @@
 import React from 'react';
+import Header from '../components/Header/Header';
 
 const Feed = () => {
-  return <div>Feed 입니다.</div>;
+  return (
+    <>
+      <Header />
+      Feed 입니다.
+    </>
+  );
 };
 
 export default Feed;
