@@ -152,3 +152,7 @@ body {
   background-color: #fff;
   color: #1d1e21;
 }
+input,
+textarea:focus {
+  outline: none;
+}
