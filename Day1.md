@@ -15,24 +15,24 @@
 9. [상위 컴포넌트에 Provider 셋팅 하기](#a9)
    - [redux 모듈 작성하기](#a10)
      - create 함수 작성하기
-     - combineReducer 작성하기 
+     - combineReducer 작성하기
      - rootSaga 작성하기
 10. [index.js Reset.css 적용하기](#a11)
 
----------
+---
 
 ### 프로젝트 생성 <a id="a1"></a>
 
 ```bash
-npx create-react-app books-review
+npx create-react-app d-code-feed
 ```
 
 <br/>
 
-### 라이브러리 인스톨하기  <a id="a2"></a>
+### 라이브러리 인스톨하기 <a id="a2"></a>
 
 ```bash
-cd books-review
+cd d-code-feed
 npm i react-error-boundary react-helmet
 npm i react-router-dom connected-react-router
 npm i redux react-redux redux-saga
@@ -85,9 +85,9 @@ npm i prettier eslint-config-prettier husky lint-staged redux-devtools-extension
 
 ```json
 {
- "printWidth": 100,
- "singleQuote": true,
- "trailingComma": "es5"
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "es5"
 }
 ```
 
@@ -97,9 +97,9 @@ npm i prettier eslint-config-prettier husky lint-staged redux-devtools-extension
 
 1. `path` 에러가 날 경우 특정 컴포넌트로 이동하도록 `<ErrorBoundary FallbackComponent={ErrorFallbackComponent}>`를 설정합니다. 추후 `Redux`를 사용할 것이고, `error`에 관한 `state`는 차후 반드시 필요하기에 미리 설정합니다.
 
-2. 지금은 상세보기(`FeedDatail`)에 관한 REST API가 주어져있기 때문에 상관없지만, 차후에는 선택된 `Feed`에 대하여 상세보기의 주소가 `feed/:feedId`형식으로 적용될 것으로 예상됩니다. 따라서 `ConnectedRouter`를 이용하여 현재 url의 `history`객체를 `Redux store`에 저장합니다. 
+2. 지금은 상세보기(`FeedDatail`)에 관한 REST API가 주어져있기 때문에 상관없지만, 차후에는 선택된 `Feed`에 대하여 상세보기의 주소가 `feed/:feedId`형식으로 적용될 것으로 예상됩니다. 따라서 `ConnectedRouter`를 이용하여 현재 url의 `history`객체를 `Redux store`에 저장합니다.
 
-3. `exact` :  주어진 경로와 정확히 맞아 떨어져야만 설정한 컴포넌트를 보여줍니다.
+3. `exact` : 주어진 경로와 정확히 맞아 떨어져야만 설정한 컴포넌트를 보여줍니다.
 
 4. `Switch` 컴포넌트에 감싸면 매칭되는 첫번째 라우트만 보여주고 나머지는 보여주지 않습니다.
 
@@ -128,7 +128,6 @@ const App = () => (
 );
 
 export default App;
-
 ```
 
 <br/>
@@ -136,19 +135,15 @@ export default App;
 ### pages 폴더 만들고 컴포넌트 만들기 <a id="a7"></a>
 
 pages
-	-- Feed.jsx
-	-- NotFound.jsx
+-- Feed.jsx
+-- NotFound.jsx
 
 ```jsx
 // Feed.jsx
 import React from 'react';
 
 const Feed = () => {
-  return (
-    <>
-      Feed 입니다.
-    </>
-  );
+  return <>Feed 입니다.</>;
 };
 
 export default Feed;
@@ -169,10 +164,10 @@ export default NotFound;
 
 ### Redux 셋팅하기 <a id="a8"></a>
 
-#### 상위 컴포넌트에 Provider 셋팅 하기  <a id="a9"></a>
+#### 상위 컴포넌트에 Provider 셋팅 하기 <a id="a9"></a>
 
 1. `Provider` 는 `react-redux` 라이브러리에 내장되어있는, 리액트 앱에 `store` 를 손쉽게 연동 할 수 있도록 도와주는 컴포넌트입니다.
-2. `store` 선언 및 `create()` 함수 호출 
+2. `store` 선언 및 `create()` 함수 호출
 
 ```jsx
 // src/index.js
@@ -195,7 +190,7 @@ ReactDOM.render(
 
 <br/>
 
-#### redux 모듈 작성하기  <a id="a10"></a>
+#### redux 모듈 작성하기 <a id="a10"></a>
 
 ##### create 함수 작성하기
 
@@ -232,7 +227,7 @@ export default create;
 
 <br/>
 
-##### combineReducer 작성하기 
+##### combineReducer 작성하기
 
 - 흩어진 리듀서를 모아 하나의 리듀서로 통합시키는 `combinerReducer`를 작성합니다.
 - 우선 틀만 작성해두었습니다.
@@ -271,6 +266,3 @@ export default function* rootSaga() {
 
 - 개발하기 앞서 CSS를 초기화 하고 시작합니다.
 - [reset.css](https://gist.github.com/DavidWells/18e73022e723037a50d6) 를 참고 하였습니다.
-
-
-
