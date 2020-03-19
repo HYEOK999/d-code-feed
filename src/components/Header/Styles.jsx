@@ -5,6 +5,7 @@ export const StyledHeader = styled.header`
   position: fixed;
   width: 100vw;
   min-width: 114.8rem;
+  top: 0;
 `;
 
 // Header/HeaderLogo.jsx
@@ -28,12 +29,14 @@ export const StyledMember = styled.ul`
   padding: 0.8rem 5.6rem;
   height: 3.5rem;
   border-bottom: 0.1rem solid #e3e3e2;
-  vertical-align: center;
   color: #707070;
+  background: #fff;
+
   li {
     display: inline-block;
     font-size: 1.2rem;
   }
+
   a {
     display: inline-block;
     padding-right: 3.7rem;
@@ -41,13 +44,14 @@ export const StyledMember = styled.ul`
 `;
 
 // Header/MainMenu.jsx
-export const StyledMainMenu = styled.div`
+export const StyledMainMenu = styled.section`
   height: 7.1rem;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.1rem solid #e3e3e2;
   padding: 1.6rem 5.4rem;
   padding-left: 15rem;
+  background: #fff;
 `;
 
 // Header/MainMenu.jsx
@@ -61,7 +65,7 @@ export const StyledNav = styled.nav`
 `;
 
 // Header/MainMenu.jsx
-export const StyledSearchSection = styled.section`
+export const StyledSearchBox = styled.div`
   width: 28rem;
 
   div {
