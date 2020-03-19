@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyledHeader as Head } from './Styles';
+import { StyledHeader } from './Styles';
 import HeaderLogo from './HeaderLogo';
 import Member from './Member';
 import MainMenu from './MainMenu';
 
 const Header = () => {
   return (
-    <Head>
+    <StyledHeader>
       <HeaderLogo />
       <Member />
       <MainMenu />
-    </Head>
+    </StyledHeader>
   );
 };
 
