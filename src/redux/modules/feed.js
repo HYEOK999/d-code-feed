@@ -21,13 +21,11 @@ const { success, pending, fail } = createActions(
 export const getFeeds = createAction('GET_FEEDS');
 
 // 비동기 처리 redux-saga
-function* fetchFeeds() {
+function* fetchFeedLists() {
   try {
     yield put(pending());
-    // await sleep(2000);
-    // yield delay(2000);
-    const res = yield call(FeedService.getList);
-    yield put(success(res.data));
+    const { data: feeds } = yield call(FeedService.getList);
+    yield put(success(feeds.data));
   } catch (error) {
     console.log('error : ', error);
     yield put(fail(error));
@@ -36,7 +34,7 @@ function* fetchFeeds() {
 
 // FEED ROOT SAGA
 export function* feedSaga() {
-  yield takeEvery(getFeeds, fetchFeeds);
+  yield takeEvery(getFeeds, fetchFeedLists);
 }
 
 // INIITIAL STATE
