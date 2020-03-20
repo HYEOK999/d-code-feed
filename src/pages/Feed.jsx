@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import Body from '../components/Body';
-import Test from '../components/Test';
+import FeedContainer from '../containers/FeedContainer';
 
 const Feed = () => {
   return (
     <>
       <Header />
       <Body />
-      <Test />
+      <FeedContainer />
     </>
   );
 };
