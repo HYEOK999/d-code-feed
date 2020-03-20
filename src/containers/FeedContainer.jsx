@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getFeeds } from '../redux/modules/feed';
+// import Body from '../components/Body';
 import Test from '../components/Test';
 
 const mapStateToProps = state => ({
@@ -9,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getFeeds: () => {
+  getFeed: () => {
     dispatch(getFeeds());
   },
 });
