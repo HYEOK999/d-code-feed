@@ -6,15 +6,20 @@
 
 1. [라이브러리 인스톨하기](#a1)
 2. [Head 작성하기](#a2)
-3. [Feed page에 Head 컴포넌트 삽입하기](#a3)
-4. [파일 정리하기](#a4)
-5. [FeedList  폴더 및 파일 스트럭쳐 구성하기](#a5)
-6. [Styles.jsx](#a6)
-7. [index.jsx](#a7)
-8. [MainTitle.jsx](#a8)
-9. [FeedHeader.jsx](#a9)
-10. [FeedContent.jsx](#a10)
-11. [FeedFooter.jsx](#a11)
+   - [Feed page에 Head 컴포넌트 삽입하기](#a3)
+3. [파일 정리하기](#a4)
+4. [FeedList  폴더 및 파일 스트럭쳐 구성하기](#a5)
+   - [Styles.jsx](#a6)
+
+   - [index.jsx](#a7)
+
+   - [MainTitle.jsx](#a8)
+
+   - [FeedHeader.jsx](#a9)
+
+   - [FeedContent.jsx](#a10)
+
+   - [FeedFooter.jsx](#a11)
 
 ---
 
