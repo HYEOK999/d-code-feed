@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { getFeeds } from '../redux/modules/feed';
-// import Body from '../components/Body';
-import Test from '../components/Test';
+import FeedList from '../components/FeedList';
 
 const mapStateToProps = state => ({
   feeds: state.feed.feeds,
@@ -15,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedList);
