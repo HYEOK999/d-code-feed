@@ -11,13 +11,13 @@
 3. [Feed.jsx 에 Header 컴포넌트 추가하기](#a1)
 
 4. [Header 폴더 및 파일 스트럭쳐 구성하기](#a3)
-   
+
    - [Styles.jsx](#a4)
    - [HeaderLogo.jsx](#a5)
    - [MainMenu.jsx](#a7)
    - [Member.jsx](#a8)
    - [index.jsx (Feed - Header 컴포넌트)](#a9)
-   
+
 5. [Feed List 데이터를 받아서 Redux Store 저장 테스트 하기](#a10)
 
    - [modules/feed.js 작성하기](#a11)
@@ -33,7 +33,7 @@
 
 ```bash
 cd d-code-feed
-npm i @fortawesome/fontawesome-svg-core 
+npm i @fortawesome/fontawesome-svg-core
 npm i @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons
 npm i @fortawesome/react-fontawesome
 npm i redux-actions
@@ -43,7 +43,7 @@ npm i redux-actions
 
 ### 전역적으로 사용할 Icons 파일 작성하기 <a id="a6"></a>
 
->  위치 : src/components/Icons.jsx
+> 위치 : src/components/Icons.jsx
 
 ```jsx
 import React from 'react';
@@ -63,7 +63,7 @@ export function ShoppingCartIcon() {
 
 ### Feed.jsx 에 Header 컴포넌트 추가하기 <a id="a1"></a>
 
->  위치 : src/pages/Feed.jsx
+> 위치 : src/pages/Feed.jsx
 
 - 작성할 Header 컴포넌트를 미리 작성 해둡니다.
 
@@ -194,7 +194,7 @@ export const StyledSearchBox = styled.div`
 
 #### HeaderLogo.jsx <a id="a5"></a>
 
-````jsx
+```jsx
 import React from 'react';
 import { StyledHeaderLogo } from './Styles';
 import { Link } from 'react-router-dom';
@@ -203,14 +203,14 @@ const HeaderLogo = () => {
   return (
     <StyledHeaderLogo>
       <Link to="/">
-        <img src="./d-code-logo.png" alt="디코드" />
+        <img src="/logo/d-code-logo.png" alt="디코드" />
       </Link>
     </StyledHeaderLogo>
   );
 };
 
 export default HeaderLogo;
-````
+```
 
 <br/>
 
@@ -250,7 +250,6 @@ const MainMenu = () => {
 };
 
 export default MainMenu;
-
 ```
 
 <br/>
@@ -307,20 +306,20 @@ export default Header;
 
 <br/>
 
-### Feed List 데이터를 받아서 Redux Store 저장 테스트 하기  <a id="a10"></a>
+### Feed List 데이터를 받아서 Redux Store 저장 테스트 하기 <a id="a10"></a>
 
 본격적으로 Feed List를 불러오고 Store에 저장하는 테스팅 코드를 작성하겠습니다.
 API는 기존에 작성해둔 services/FeedService.js에 모아두었습니다.
 
 <br/>
 
-#### modules/feed.js 작성하기  <a id="a11"></a>
+#### modules/feed.js 작성하기 <a id="a11"></a>
 
-> 위치 : src/redux/modules/feed.js 
+> 위치 : src/redux/modules/feed.js
 
 1. 모듈을 작성합니다.
 2. 액션, 액션생성자(크리에이터), 리듀서 등을 보다 관리하기 쉽고 가독성, 유지보수성을 위해 `redux-actions` 라이브러리를 사용합니다.
-3. 3개의 리듀서로 나눕니다. (PENDING, SUCCESS, FAIL) - `switch문` 대신  `redux-actions의 handleActions를 시용`
+3. 3개의 리듀서로 나눕니다. (PENDING, SUCCESS, FAIL) - `switch문` 대신 `redux-actions의 handleActions를 시용`
    - PENDING : 리덕스 사가가 비동기처리를 시작하면서 데이터 결과를 확인 전까지 Pending 상태로 둡니다. 기본적으로 추후에만들 Spinner 나 Gray-scale 등을 사용하기 위해 만들었습니다.
    - SUCCESS: 리덕스 사가를 통해 데이터를 안전하게 반환받았다면 SUCCESS를 통해서 데이터를 store에 저장합니다.
    - FAIL : 불특정의 이유로 인해 데이터를 받아오지 못했을 경우 해당 에러 메시지를 store에 저장합니다.
@@ -401,7 +400,7 @@ export default feed;
 
 <br/>
 
-#### Combine Reducer에 리듀서 추가하기  <a id="a12"></a>
+#### Combine Reducer에 리듀서 추가하기 <a id="a12"></a>
 
 > 위치 : src/redux/modules/reducer.js
 
@@ -423,7 +422,7 @@ export default reducer;
 
 <br/>
 
-#### Root Saga에 사가함수 추가하기  <a id="a13"></a>
+#### Root Saga에 사가함수 추가하기 <a id="a13"></a>
 
 > 위치 : src/redux/modules/saga.js
 
@@ -440,7 +439,7 @@ export default function* rootSaga() {
 
 <br/>
 
-#### Container, Test Component 작성하기  <a id="a14"></a>
+#### Container, Test Component 작성하기 <a id="a14"></a>
 
 > Container 위치 : src/containers/FeedContainer.jsx
 >
@@ -470,7 +469,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Test);
 
 - Test Component
 
-````jsx
+```jsx
 import React, { useEffect } from 'react';
 
 const Test = ({ feeds, loading, error, getFeed }) => {
@@ -482,5 +481,4 @@ const Test = ({ feeds, loading, error, getFeed }) => {
 };
 
 export default Test;
-````
-
+```
