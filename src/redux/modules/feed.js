@@ -8,11 +8,10 @@ const options = {
 
 // 액션 타입 및 생성자를 한번에 모아서 사용한다. - redux-actions
 // const success = feeds => ({ type: SUCCESS, feeds });
-const { successList, successComments, successLikeCount, pending, fail } = createActions(
+const { successList, successComments, pending, fail } = createActions(
   {
     SUCCESS_LIST: feeds => ({ feeds }),
     SUCCESS_COMMENTS: comments => ({ comments }),
-    SUCCESS_LIKE_COUNT: (feeds, feedId) => ({ feeds, feedId }),
   },
   'PENDING',
   'FAIL',
