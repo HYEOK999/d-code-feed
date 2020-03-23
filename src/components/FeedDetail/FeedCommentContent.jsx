@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledCommentButton } from './Styles';
 import { ReplyCommentIcon } from '../Icons';
 
-const FeedDetailCommentContent = ({ comment, reply }) => {
+const FeedCommentContent = ({ comment, reply }) => {
   return (
     <div>
       <h4>
@@ -20,4 +20,4 @@ const FeedDetailCommentContent = ({ comment, reply }) => {
   );
 };
 
-export default FeedDetailCommentContent;
+export default FeedCommentContent;
