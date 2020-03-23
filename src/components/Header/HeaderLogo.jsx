@@ -6,7 +6,7 @@ const HeaderLogo = () => {
   return (
     <StyledHeaderLogo>
       <Link to="/">
-        <img src="./d-code-logo.png" alt="디코드" />
+        <img src="/logo/d-code-logo.png" alt="디코드" />
       </Link>
     </StyledHeaderLogo>
   );
