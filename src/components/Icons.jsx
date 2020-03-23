@@ -1,7 +1,7 @@
 import React from 'react';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-svg-icons';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function SearchIcon() {
@@ -26,4 +26,16 @@ export function LinkIcon() {
 
 export function FacebookIcon() {
   return <FontAwesomeIcon icon={faFacebook} />;
+}
+
+export function AppStoreIcon() {
+  return <FontAwesomeIcon icon={faApple} />;
+}
+
+export function PlayStoreIcon() {
+  return <FontAwesomeIcon icon={faGooglePlay} />;
+}
+
+export function ReplyCommentIcon() {
+  return <FontAwesomeIcon icon={faAngleRight} />;
 }
