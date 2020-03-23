@@ -6,6 +6,7 @@ export const StyledHeader = styled.header`
   width: 100vw;
   min-width: 114.8rem;
   top: 0;
+  z-index: 9999;
 `;
 
 // Header/HeaderLogo.jsx
