@@ -8,8 +8,8 @@ import FeedFooter from './FeedFooter';
 
 const FeedList = ({ feeds, loading, error, getFeed }) => {
   useEffect(() => {
-    getFeed();
-  }, [getFeed]);
+    if (!feeds) getFeed();
+  }, [feeds, getFeed]);
 
   return (
     <StyledMain>
