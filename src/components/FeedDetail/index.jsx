@@ -3,7 +3,7 @@ import { StyledMain, StyledDescriptionArea, StyledDescriptionArticle } from './S
 import FeedDetailImg from './FeedDetailImg';
 import FeedDetailHeader from './FeedDetailHeader';
 import FeedDetailContent from './FeedDetailContent';
-import FeedDetailComment from './FeedDetailComment';
+import FeedComment from './FeedComment';
 import Loading from '../Loading';
 
 const FeedDetail = ({ feedId, feeds, comments, loading, error, getFeedComments, setFeedLike }) => {
@@ -29,7 +29,7 @@ const FeedDetail = ({ feedId, feeds, comments, loading, error, getFeedComments, 
                 feedId={feedId}
               />
               <FeedDetailContent feed={feed} />
-              <FeedDetailComment comments={comments} />
+              <FeedComment comments={comments} />
             </StyledDescriptionArticle>
           </StyledDescriptionArea>
         </>
