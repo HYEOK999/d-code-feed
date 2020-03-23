@@ -33,6 +33,15 @@ export const StyledContent = styled.div`
   flex-wrap: wrap;
 `;
 
+export const StyledButton = styled.button`
+  width: 100%;
+  padding: 0;
+  cursor: initial;
+  outline: none;
+  border: none;
+  text-align: inherit;
+`;
+
 export const StyledFeedImg = styled.img`
   width: 100%;
 `;
@@ -42,8 +51,10 @@ export const StyledFeedTagBox = styled.div`
   line-height: 1.3;
   font-weight: 900;
   margin: 1rem 0;
+  overflow-wrap: break-word;
 
   span {
+    display: inline-block;
     margin-right: 1rem;
   }
 `;
