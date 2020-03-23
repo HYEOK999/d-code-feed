@@ -8,9 +8,11 @@ const options = {
 
 // 액션 타입 및 생성자를 한번에 모아서 사용한다. - redux-actions
 // const success = feeds => ({ type: SUCCESS, feeds });
-const { success, pending, fail } = createActions(
+const { successList, successComments, successLikeCount, pending, fail } = createActions(
   {
-    SUCCESS: feeds => ({ feeds }),
+    SUCCESS_LIST: feeds => ({ feeds }),
+    SUCCESS_COMMENTS: comments => ({ comments }),
+    SUCCESS_LIKE_COUNT: (feeds, feedId) => ({ feeds, feedId }),
   },
   'PENDING',
   'FAIL',
@@ -19,13 +21,26 @@ const { success, pending, fail } = createActions(
 
 // ACTIONS
 export const getFeeds = createAction('GET_FEEDS');
+export const getFeedComments = createAction('GET_FEED_COMMENTS');
+export const setFeedLike = successList;
 
 // 비동기 처리 redux-saga
 function* fetchFeedLists() {
   try {
     yield put(pending());
     const { data: feeds } = yield call(FeedService.getList);
-    yield put(success(feeds.data));
+    yield put(successList(feeds.data));
+  } catch (error) {
+    console.log('error : ', error);
+    yield put(fail(error));
+  }
+}
+
+function* fetchFeedComments() {
+  try {
+    yield put(pending());
+    const { data: feeds } = yield call(FeedService.getComments);
+    yield put(successComments(feeds.data));
   } catch (error) {
     console.log('error : ', error);
     yield put(fail(error));
@@ -35,11 +50,13 @@ function* fetchFeedLists() {
 // FEED ROOT SAGA
 export function* feedSaga() {
   yield takeEvery(getFeeds, fetchFeedLists);
+  yield takeEvery(getFeedComments, fetchFeedComments);
 }
 
 // INIITIAL STATE
 const initialState = {
   feeds: null,
+  comments: null,
   loading: false,
   error: null,
 };
@@ -51,8 +68,15 @@ const feed = handleActions(
       loading: true,
       error: null,
     }),
-    SUCCESS: (state, action) => ({
+    SUCCESS_LIST: (state, action) => ({
+      ...state,
       feeds: action.payload.feeds,
+      loading: false,
+      error: null,
+    }),
+    SUCCESS_COMMENTS: (state, action) => ({
+      ...state,
+      comments: action.payload.comments,
       loading: false,
       error: null,
     }),
