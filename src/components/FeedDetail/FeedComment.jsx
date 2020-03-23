@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledCommentArea, StyledTextInputDiv, StyledComment, StyledReplyComment } from './Styles';
 import { v4 as uuidv4 } from 'uuid';
-import FeedDetailCommentContent from './FeedDetailCommentContent';
+import FeedCommentContent from './FeedCommentContent';
 
-const FeedDetailComment = ({ comments }) => {
+const FeedComment = ({ comments }) => {
   return (
     <StyledCommentArea>
       <h3>COMMENTS</h3>
@@ -15,12 +15,12 @@ const FeedDetailComment = ({ comments }) => {
         {comments &&
           comments.list.map(comment => (
             <li key={uuidv4()}>
-              <FeedDetailCommentContent comment={comment} />
+              <FeedCommentContent comment={comment} />
               <StyledReplyComment>
                 {comment.replies &&
                   comment.replies.list.map(replie => (
                     <li key={uuidv4()}>
-                      <FeedDetailCommentContent comment={replie} reply={true} />
+                      <FeedCommentContent comment={replie} reply={true} />
                     </li>
                   ))}
               </StyledReplyComment>
@@ -31,4 +31,4 @@ const FeedDetailComment = ({ comments }) => {
   );
 };
 
-export default FeedDetailComment;
+export default FeedComment;
