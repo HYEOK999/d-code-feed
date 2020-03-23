@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { StyledFeedImg, StyledFeedTagBox, StyledFeedContent } from './Styles';
+import { push } from 'connected-react-router';
+import { useDispatch } from 'react-redux';
+
+import { StyledButton, StyledFeedImg, StyledFeedTagBox, StyledFeedContent } from './Styles';
 import { v4 as uuidv4 } from 'uuid';
 
 const FeedContent = ({ feed }) => {
+  const dispatch = useDispatch();
+
   return (
-    <Link to={`/feed/${feed.id}`}>
+    <StyledButton role="link" onClick={() => dispatch(push(`/feed/${feed.id}`))}>
       <StyledFeedImg src={feed.mediaList[0].url} alt="images" />
       <StyledFeedTagBox>
         {feed.tags.map(tag => (
@@ -13,7 +17,7 @@ const FeedContent = ({ feed }) => {
         ))}
       </StyledFeedTagBox>
       <StyledFeedContent>{feed.text}</StyledFeedContent>
-    </Link>
+    </StyledButton>
   );
 };
 
