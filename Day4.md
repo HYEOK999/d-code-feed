@@ -9,7 +9,9 @@
 3. [HOC 작성](#a3)
 4. [Detail 관련 Redux 추가하기](#a4)
 5. [FeedDetailContainer 만들기 + 좋아요 로직 구성](#a5)
-6. [Detail 페이지 구현하기 - 틀 작성](#a6)
+6. [Detail에서 사용할 Icon 추가하기](#a6)
+7. [Detail에서 사용할 logo Img 추가하기](#a7)
+8. [FeedDetail 페이지 추가하기](#a8)
 
 ---
 
@@ -281,57 +283,94 @@ export default connect(mapStateToProps, mapDispatchToProps)(FeedDetail);
 
 <br/>
 
-### Detail 페이지 구현하기 - 틀 작성 <a id="a6"></a>
+### Detail에서 사용할 Icon 추가하기  <a id="a6"></a>
 
-> 위치 : src/components/FeedDetail/index.jsx
-
-- 요구사항 : 피드 상세보기 페이지 , 댓글 , 좋아요 기능 추가하기
-- 상세페이지를 작성합니다.
-- 현재 store에 있는 로딩의 상태를 반영합니다.
+> 위치 : src/components/Icons.jsx
 
 ```jsx
-// src/components/FeedDetail/index.jsx
-import React, { useEffect } from 'react';
-import { StyledMain, StyledDescriptionArea, StyledDescriptionArticle } from './Styles';
-import FeedDetailImg from './FeedDetailImg';
-import FeedDetailHeader from './FeedDetailHeader';
-import FeedDetailContent from './FeedDetailContent';
-import FeedComment from './FeedComment';
-import Loading from '../Loading';
+import React from 'react';
+import { faSearch, faShoppingCart, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-svg-icons';
+import { faFacebook, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const FeedDetail = ({ feedId, feeds, comments, loading, error, getFeedComments, setFeedLike }) => {
-  const feed = feeds && feeds.list.filter(feed => feed.id === +feedId)[0];
-  useEffect(() => {
-    getFeedComments();
-  }, [getFeedComments]);
+export function SearchIcon() {
+  return <FontAwesomeIcon icon={faSearch} size="lg" />;
+}
 
-  return (
-    <StyledMain>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <h2 className="a11y-hidden">Feed Detail</h2>
-          <FeedDetailImg feed={feed} />
-          <StyledDescriptionArea>
-            <StyledDescriptionArticle>
-              <FeedDetailHeader
-                feed={feed}
-                setFeedLike={setFeedLike}
-                feeds={feeds}
-                feedId={feedId}
-              />
-              <FeedDetailContent feed={feed} />
-              <FeedComment comments={comments} />
-            </StyledDescriptionArticle>
-          </StyledDescriptionArea>
-        </>
-      )}
-    </StyledMain>
-  );
-};
+export function ShoppingCartIcon() {
+  return <FontAwesomeIcon icon={faShoppingCart} size="lg" />;
+}
 
-export default FeedDetail;
+export function HeartIcon() {
+  return <FontAwesomeIcon icon={faHeart} />;
+}
+
+export function CommentAltIcon() {
+  return <FontAwesomeIcon icon={faCommentAlt} />;
+}
+
+export function LinkIcon() {
+  return <FontAwesomeIcon icon={faShareSquare} />;
+}
+
+export function FacebookIcon() {
+  return <FontAwesomeIcon icon={faFacebook} />;
+}
+
+export function AppStoreIcon() {
+  return <FontAwesomeIcon icon={faApple} />;
+}
+
+export function PlayStoreIcon() {
+  return <FontAwesomeIcon icon={faGooglePlay} />;
+}
+
+export function ReplyCommentIcon() {
+  return <FontAwesomeIcon icon={faAngleRight} />;
+}
 ```
 
 <br/>
+
+### Detail에서 사용할 logo Img 추가하기  <a id="a7"></a>
+
+<img width="261" alt="Logo-Structure" src="https://user-images.githubusercontent.com/31315644/77395968-175b8180-6de6-11ea-8e28-66361164e588.png">
+
+<br/>
+
+### FeedDetail 페이지 추가하기 <a id="a8"></a>
+
+> 위치 : src/pages/FeedDetail.jsx
+
+- 작성했던 HOC로 감싸줍니다.
+
+```jsx
+// src/pages/FeedDetail.jsx
+
+import React from 'react';
+import Head from '../components/Head';
+import Header from '../components/Header';
+import FeedDetailContainer from '../containers/FeedDetailContainer';
+import withFeed from '../hocs/withFeed';
+import Footer from '../components/Footer';
+
+const FeedDetail = ({ feedId }) => {
+  return (
+    <>
+      <Head
+        keywords="d.code, Feed"
+        description="최신 패션 뉴스를 전해드립니다."
+        title="디코드(d.code) 패션 셀렉트샵"
+        favicon="/static/favicon.ico"
+      />
+      <Header />
+      <FeedDetailContainer feedId={feedId} />
+      <Footer />
+    </>
+  );
+};
+
+export default withFeed(FeedDetail);
+```
+
