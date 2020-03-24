@@ -1,68 +1,116 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# d.code PC 웹사이트 패션 피드 구현
 
-## Available Scripts
+----------
 
-In the project directory, you can run:
+## 주제 
 
-### `npm start `
+- 디코드 PC 웹사이트의 패션 피드를 구현 
+- JSON 데이터 사용 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### 테크스택
 
-### `npm test`
+- ES2015+
+- ReactJS 16.8+
+- Redux , Redux-saga
+- Ducks Pattern
+- CRA
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
-### `npm run build`
+### 화면구성 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 패션피드목록 
+- 패션피드상세
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### [Day01 : - 초기 셋팅 하기 -](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md)
 
-### `npm run eject`
+**목차**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. [프로젝트 생성](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a1)
+2. [라이브러리 인스톨하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a2)
+3. [nvm 설정파일 생성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a3)
+4. [package.json 설정 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a4)
+5. [prettier 설정파일 생성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a5)
+6. [라우터 설정하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a6)
+7. [pages 폴더 만들고 컴포넌트 설정하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a7)
+8. [Redux 셋팅하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a8)
+9. 상위 컴포넌트에 Provider 셋팅 하기
+   - redux 모듈 작성하기
+     - create 함수 작성하기
+     - combineReducer 작성하기
+     - rootSaga 작성하기
+10. [index.js Reset.css 적용하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day1.md#a11)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### [Day02 : - header 꾸미기, Store에 feed 저장 테스트 - ](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**목차**
 
-## Learn More
+1. [라이브러리 인스톨하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a2)
+2. [전역적으로 사용할 Icons 파일 작성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a6)
+3. [Feed.jsx 에 Header 컴포넌트 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a1)
+4. [Header 폴더 및 파일 스트럭쳐 구성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a3)
+   - [Styles.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a4)
+   - [HeaderLogo.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a5)
+   - [MainMenu.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a7)
+   - [Member.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a8)
+   - [index.jsx (Feed - Header 컴포넌트)](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a9)
+5. [Feed List 데이터를 받아서 Redux Store 저장 테스트 하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a10)
+   - [modules/feed.js 작성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a11)
+   - [Combine Reducer에 리듀서 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a12)
+   - [Root Saga에 사가함수 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a13)
+   - [Container, Test Component 작성하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day2.md#a14)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [Day03 : - Head 작성 및 Feed List 목록 구현 - ](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md)
 
-### Code Splitting
+**목차**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. [라이브러리 인스톨하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a1)
+2. Head 작성하기
+   - [Feed page에 Head 컴포넌트 삽입하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a3)
+3. [파일 정리하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a4)
+4. FeedList 폴더 및 파일 스트럭쳐 구성하기
+   - [Styles.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a6)
+   - [index.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a7)
+   - [MainTitle.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a8)
+   - [FeedHeader.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a9)
+   - [FeedContent.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a10)
+   - [FeedFooter.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day3.md#a11)
 
-### Analyzing the Bundle Size
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### [Day04 : - FeedList 일부 수정 및 FeedDetail 구현1 -](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md)
 
-### Making a Progressive Web App
+**목차**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+1. [FeedList useEffect 수정](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a1)
+2. [FeedList Link 태그 수정](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a2)
+3. [HOC 작성](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a3)
+4. [Detail 관련 Redux 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a4)
+5. [FeedDetailContainer 만들기 + 좋아요 로직 구성](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a5)
+6. [Detail에서 사용할 Icon 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a6)
+7. [Detail에서 사용할 logo Img 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a7)
+8. [FeedDetail 페이지 추가하기](https://github.com/HYEOK999/d-code-feed/blob/master/Day4.md#a8)
 
-### Advanced Configuration
+<br/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### [Day05 : - FeedDetail 완성 -](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md)
 
-### Deployment
+**목차**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- FeedDetail 폴더 및 파일 스트럭쳐 구성하기
+  - [Styles.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a2)
+  - [index.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a6)
+  - [FeedDetailImg.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a3)
+  - [FeedDetailHeader.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a4)
+  - [FeedDetailContent.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a5)
+  - [FeedComment](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a6)
+  - [FeedCommentContent.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a7)
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
