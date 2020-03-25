@@ -15,7 +15,7 @@ function withFeed(Component) {
     return <Component {...props} feedId={feedId} />;
   }
 
-  WrappedComponent.displayName = `withAuth(${Component.name})`;
+  WrappedComponent.displayName = `withFeed(${Component.name})`;
 
   return WrappedComponent;
 }
