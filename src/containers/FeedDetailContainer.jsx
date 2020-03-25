@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => ({
           item.id === feedId
             ? {
                 ...item,
+                like: !item.like,
                 likedCount:
                   likeCount === 1
                     ? item.likedCount
