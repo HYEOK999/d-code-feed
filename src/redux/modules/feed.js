@@ -8,10 +8,11 @@ const options = {
 
 // 액션 타입 및 생성자를 한번에 모아서 사용한다. - redux-actions
 // const success = feeds => ({ type: SUCCESS, feeds });
-const { successList, successComments, pending, fail } = createActions(
+const { successList, successComments, successLike, pending, fail } = createActions(
   {
     SUCCESS_LIST: feeds => ({ feeds }),
     SUCCESS_COMMENTS: comments => ({ comments }),
+    SUCCESS_LIKE: feeds => ({ feeds }),
   },
   'PENDING',
   'FAIL',
@@ -21,7 +22,7 @@ const { successList, successComments, pending, fail } = createActions(
 // ACTIONS
 export const getFeeds = createAction('GET_FEEDS');
 export const getFeedComments = createAction('GET_FEED_COMMENTS');
-export const setFeedLike = successList;
+export const setFeedLike = successLike;
 
 // 비동기 처리 redux-saga
 function* fetchFeedLists() {
@@ -69,13 +70,22 @@ const feed = handleActions(
     }),
     SUCCESS_LIST: (state, action) => ({
       ...state,
-      feeds: action.payload.feeds,
+      feeds: {
+        ...action.payload.feeds,
+        list: action.payload.feeds.list.map(feed => ({ ...feed, like: false })),
+      },
       loading: false,
       error: null,
     }),
     SUCCESS_COMMENTS: (state, action) => ({
       ...state,
       comments: action.payload.comments,
+      loading: false,
+      error: null,
+    }),
+    SUCCESS_LIKE: (state, action) => ({
+      ...state,
+      feeds: action.payload.feeds,
       loading: false,
       error: null,
     }),
