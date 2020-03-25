@@ -1,26 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import {
   StyledSmall,
   StyledMdName,
   StyledCreatedDay,
-  StyledLikeArea,
-  StyledLikeButton,
+  // StyledLikeArea,
+  // StyledLikeButton,
 } from './Styles';
+import Like from '../Like';
 
 const FeedDetailHeader = ({ feed, setFeedLike, feedId, feeds }) => {
-  const [likeState, setLikeState] = useState(false);
-  const likeRef = useRef();
-
-  function likeToggle({ target }) {
-    if (target.tagName !== 'DIV') {
-      if (likeState) {
-        setFeedLike(feeds, +feedId, -1);
-      } else {
-        setFeedLike(feeds, +feedId, 1);
-      }
-      setLikeState(!likeState);
-    }
-  }
+  // function likeToggle({ target }) {
+  //   if (target.tagName !== 'DIV') {
+  //     if (feed.like) {
+  //       setFeedLike(feeds, +feedId, -1);
+  //     } else {
+  //       setFeedLike(feeds, +feedId, 1);
+  //     }
+  //   }
+  // }
 
   return (
     <header>
@@ -29,12 +26,13 @@ const FeedDetailHeader = ({ feed, setFeedLike, feedId, feeds }) => {
         <StyledMdName>{feed && feed.mdInfo.mdName.toUpperCase()}</StyledMdName>
         <StyledCreatedDay>{feed && feed.createdAt.split(' ')[0]}</StyledCreatedDay>
       </StyledSmall>
-      <StyledLikeArea>
+      <Like feed={feed} feeds={feeds} feedId={feedId} setFeedLike={setFeedLike} />
+      {/* <StyledLikeArea>
         <StyledLikeButton onClick={e => likeToggle(e)}>
-          <div className={likeState ? 'is-active' : ''} ref={likeRef} />
+          <div className={feed && feed.like ? 'is-active' : ''} />
         </StyledLikeButton>
         <p>{feed && feed.likedCount ? feed.likedCount : '0'}</p>
-      </StyledLikeArea>
+      </StyledLikeArea> */}
     </header>
   );
 };
