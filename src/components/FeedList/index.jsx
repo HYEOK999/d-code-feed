@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { StyledMain, StyledContent, StyledFeedArticle } from './Styles';
-import { v4 as uuidv4 } from 'uuid';
 import MainTitle from './MainTitle';
 import FeedHeader from './FeedHeader';
 import FeedContent from './FeedContent';
 import FeedFooter from './FeedFooter';
+import Like from '../Like';
 
-const FeedList = ({ feeds, loading, error, getFeed }) => {
+const FeedList = ({ feeds, loading, error, getFeed, setFeedLike }) => {
   useEffect(() => {
     if (!feeds) getFeed();
   }, [feeds, getFeed]);
@@ -17,9 +17,16 @@ const FeedList = ({ feeds, loading, error, getFeed }) => {
       <StyledContent>
         {feeds &&
           feeds.list.map(feed => (
-            <StyledFeedArticle key={uuidv4()}>
+            <StyledFeedArticle key={feed.id}>
               <FeedHeader feed={feed} />
-              <FeedContent feed={feed} />
+              <FeedContent feed={feed} feeds={feeds} setFeedLike={setFeedLike} />
+              <Like
+                feed={feed}
+                feeds={feeds}
+                feedId={feed.id}
+                setFeedLike={setFeedLike}
+                list={true}
+              />
               <FeedFooter feed={feed} />
             </StyledFeedArticle>
           ))}
