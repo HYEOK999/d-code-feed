@@ -24,6 +24,7 @@ export const StyledFeedArticle = styled.article`
   display: inline-block;
   width: 32%;
   margin-top: 2.5rem;
+  position: relative;
 `;
 
 export const StyledContent = styled.div`
