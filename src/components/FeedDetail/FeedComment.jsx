@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledCommentArea, StyledTextInputDiv, StyledComment, StyledReplyComment } from './Styles';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import FeedCommentContent from './FeedCommentContent';
 
 const FeedComment = ({ comments }) => {
@@ -14,12 +14,14 @@ const FeedComment = ({ comments }) => {
       <StyledComment>
         {comments &&
           comments.list.map(comment => (
-            <li key={uuidv4()}>
+            // <li key={uuidv4()}>
+            <li key={comment.id}>
               <FeedCommentContent comment={comment} />
               <StyledReplyComment>
                 {comment.replies &&
                   comment.replies.list.map(replie => (
-                    <li key={uuidv4()}>
+                    // <li key={uuidv4()}>
+                    <li key={replie.id}>
                       <FeedCommentContent comment={replie} reply={true} />
                     </li>
                   ))}
