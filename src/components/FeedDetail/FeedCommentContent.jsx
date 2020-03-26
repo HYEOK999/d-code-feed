@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledCommentButton } from './Styles';
 import { ReplyCommentIcon } from '../Icons';
 
-const FeedCommentContent = ({ comment, reply }) => {
+const FeedCommentContent = React.memo(({ comment, reply }) => {
   return (
     <div>
       <h4>
@@ -18,6 +18,6 @@ const FeedCommentContent = ({ comment, reply }) => {
       </StyledCommentButton>
     </div>
   );
-};
+});
 
 export default FeedCommentContent;
