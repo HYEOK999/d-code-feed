@@ -53,7 +53,7 @@ export const StyledLikeButton = styled.button`
   }
 `;
 
-const Like = ({ feed, setFeedLike, feeds, feedId, list }) => {
+const Like = React.memo(({ feed, setFeedLike, feeds, feedId, list }) => {
   function likeToggle({ target }) {
     if (target.tagName !== 'DIV') {
       if (feed.like) {
@@ -74,6 +74,6 @@ const Like = ({ feed, setFeedLike, feeds, feedId, list }) => {
       </StyledLikeArea>
     </>
   );
-};
+});
 
 export default Like;
