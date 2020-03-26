@@ -3,7 +3,7 @@ import { StyledCommentArea, StyledTextInputDiv, StyledComment, StyledReplyCommen
 // import { v4 as uuidv4 } from 'uuid';
 import FeedCommentContent from './FeedCommentContent';
 
-const FeedComment = ({ comments }) => {
+const FeedComment = React.memo(({ comments }) => {
   return (
     <StyledCommentArea>
       <h3>COMMENTS</h3>
@@ -31,6 +31,6 @@ const FeedComment = ({ comments }) => {
       </StyledComment>
     </StyledCommentArea>
   );
-};
+});
 
 export default FeedComment;
