@@ -72,7 +72,19 @@ const feed = handleActions(
       ...state,
       feeds: {
         ...action.payload.feeds,
-        list: action.payload.feeds.list.map(feed => ({ ...feed, like: false })),
+        list: action.payload.feeds.list.map(feedList => {
+          // 분리작업
+          const {
+            [feedList.sCount || feedList.sharedCount]: renameSharedCount,
+            ...feed
+          } = feedList;
+
+          return {
+            ...feed,
+            sharedCount: renameSharedCount,
+            like: false,
+          };
+        }),
       },
       loading: false,
       error: null,

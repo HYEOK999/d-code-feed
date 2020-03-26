@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledMainText, StyledFeedTagBox } from './Styles';
 import { v4 as uuidv4 } from 'uuid';
 
-const FeedDetailContent = ({ feed }) => {
+const FeedDetailContent = React.memo(({ feed }) => {
   return (
     <>
       <StyledMainText>{feed && feed.text}</StyledMainText>
@@ -11,6 +11,6 @@ const FeedDetailContent = ({ feed }) => {
       </StyledFeedTagBox>
     </>
   );
-};
+});
 
 export default FeedDetailContent;

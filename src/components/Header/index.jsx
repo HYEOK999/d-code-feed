@@ -4,7 +4,7 @@ import HeaderLogo from './HeaderLogo';
 import Member from './Member';
 import MainMenu from './MainMenu';
 
-const Header = () => {
+const Header = React.memo(() => {
   return (
     <StyledHeader>
       <HeaderLogo />
@@ -12,6 +12,6 @@ const Header = () => {
       <MainMenu />
     </StyledHeader>
   );
-};
+});
 
 export default Header;

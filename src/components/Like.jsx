@@ -38,7 +38,7 @@ export const StyledLikeButton = styled.button`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -57%);
+    transform: translate(-50%, -60%);
     width: 100px;
     height: 100px;
     background: url('/heart.png') no-repeat;
@@ -51,9 +51,14 @@ export const StyledLikeButton = styled.button`
       background-position: -2800px 0;
     }
   }
+  &.list {
+    div {
+      transform: translate(-50%, -57%);
+    }
+  }
 `;
 
-const Like = ({ feed, setFeedLike, feeds, feedId, list }) => {
+const Like = React.memo(({ feed, setFeedLike, feeds, feedId, list }) => {
   function likeToggle({ target }) {
     if (target.tagName !== 'DIV') {
       if (feed.like) {
@@ -67,13 +72,13 @@ const Like = ({ feed, setFeedLike, feeds, feedId, list }) => {
   return (
     <>
       <StyledLikeArea className={list && 'list'}>
-        <StyledLikeButton onClick={e => likeToggle(e)}>
+        <StyledLikeButton className={list && 'list'} onClick={e => likeToggle(e)}>
           <div className={feed && feed.like ? 'is-active' : ''} />
         </StyledLikeButton>
         <p>{feed && feed.likedCount ? feed.likedCount : '0'}</p>
       </StyledLikeArea>
     </>
   );
-};
+});
 
 export default Like;

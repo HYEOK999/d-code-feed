@@ -131,12 +131,12 @@ const StyledLoading = styled.div`
   }
 `;
 
-const Loading = () => {
+const Loading = React.memo(() => {
   return (
     <StyledLoading>
       <div>Loading&#8230;</div>
     </StyledLoading>
   );
-};
+});
 
 export default Loading;

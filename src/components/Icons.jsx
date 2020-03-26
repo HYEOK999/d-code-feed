@@ -4,38 +4,38 @@ import { faHeart, faCommentAlt, faShareSquare } from '@fortawesome/free-regular-
 import { faFacebook, faGooglePlay, faApple } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export function SearchIcon() {
+export const SearchIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faSearch} size="lg" />;
-}
+});
 
-export function ShoppingCartIcon() {
+export const ShoppingCartIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faShoppingCart} size="lg" />;
-}
+});
 
-export function HeartIcon() {
+export const HeartIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faHeart} />;
-}
+});
 
-export function CommentAltIcon() {
+export const CommentAltIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faCommentAlt} />;
-}
+});
 
-export function LinkIcon() {
+export const LinkIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faShareSquare} />;
-}
+});
 
-export function FacebookIcon() {
+export const FacebookIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faFacebook} />;
-}
+});
 
-export function AppStoreIcon() {
+export const AppStoreIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faApple} />;
-}
+});
 
-export function PlayStoreIcon() {
+export const PlayStoreIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faGooglePlay} />;
-}
+});
 
-export function ReplyCommentIcon() {
+export const ReplyCommentIcon = React.memo(() => {
   return <FontAwesomeIcon icon={faAngleRight} />;
-}
+});

@@ -5,20 +5,20 @@ import { useDispatch } from 'react-redux';
 import { StyledButton, StyledFeedImg, StyledFeedTagBox, StyledFeedContent } from './Styles';
 import { v4 as uuidv4 } from 'uuid';
 
-const FeedContent = ({ feed }) => {
+const FeedContent = React.memo(({ id, url, tags, text }) => {
   const dispatch = useDispatch();
 
   return (
-    <StyledButton role="link" onClick={() => dispatch(push(`/feed/${feed.id}`))}>
-      <StyledFeedImg src={feed.mediaList[0].url} alt="images" />
+    <StyledButton role="link" onClick={() => dispatch(push(`/feed/${id}`))}>
+      <StyledFeedImg src={url} alt="images" />
       <StyledFeedTagBox>
-        {feed.tags.map(tag => (
+        {tags.map(tag => (
           <span key={uuidv4()}>{`#${tag}`}</span>
         ))}
       </StyledFeedTagBox>
-      <StyledFeedContent>{feed.text}</StyledFeedContent>
+      <StyledFeedContent>{text}</StyledFeedContent>
     </StyledButton>
   );
-};
+});
 
 export default FeedContent;

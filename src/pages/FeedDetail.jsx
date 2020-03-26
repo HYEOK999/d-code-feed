@@ -5,7 +5,7 @@ import FeedDetailContainer from '../containers/FeedDetailContainer';
 import withFeed from '../hocs/withFeed';
 import Footer from '../components/Footer';
 
-const FeedDetail = ({ feedId }) => {
+const FeedDetail = React.memo(({ feedId }) => {
   return (
     <>
       <Head
@@ -19,6 +19,6 @@ const FeedDetail = ({ feedId }) => {
       <Footer />
     </>
   );
-};
+});
 
 export default withFeed(FeedDetail);
