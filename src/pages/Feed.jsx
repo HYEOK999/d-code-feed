@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import FeedListContainer from '../containers/FeedListContainer';
 import Footer from '../components/Footer';
 
-const Feed = () => {
+const Feed = React.memo(() => {
   return (
     <>
       <Head
@@ -18,6 +18,6 @@ const Feed = () => {
       <Footer />
     </>
   );
-};
+});
 
 export default Feed;
