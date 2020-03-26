@@ -6,7 +6,7 @@ import FeedContent from './FeedContent';
 import FeedFooter from './FeedFooter';
 import Like from '../Like';
 
-const FeedList = ({ feeds, loading, error, getFeed, setFeedLike }) => {
+const FeedList = React.memo(({ feeds, loading, error, getFeed, setFeedLike }) => {
   useEffect(() => {
     if (!feeds) getFeed();
   }, [feeds, getFeed]);
@@ -18,8 +18,13 @@ const FeedList = ({ feeds, loading, error, getFeed, setFeedLike }) => {
         {feeds &&
           feeds.list.map(feed => (
             <StyledFeedArticle key={feed.id}>
-              <FeedHeader feed={feed} />
-              <FeedContent feed={feed} feeds={feeds} setFeedLike={setFeedLike} />
+              <FeedHeader tags={feed.tags} />
+              <FeedContent
+                id={feed.id}
+                url={feed.mediaList[0].url}
+                tags={feed.tags}
+                text={feed.text}
+              />
               <Like
                 feed={feed}
                 feeds={feeds}
@@ -27,12 +32,18 @@ const FeedList = ({ feeds, loading, error, getFeed, setFeedLike }) => {
                 setFeedLike={setFeedLike}
                 list={true}
               />
-              <FeedFooter feed={feed} />
+              <FeedFooter
+                mdThumb={feed.mdInfo.mdThumb}
+                mdName={feed.mdInfo.mdName}
+                createdAt={feed.createdAt.split(' ')[0]}
+                id={feed.id}
+                count={[feed.likedCount, feed.replyCount, feed.sharedCount]}
+              />
             </StyledFeedArticle>
           ))}
       </StyledContent>
     </StyledMain>
   );
-};
+});
 
 export default FeedList;
