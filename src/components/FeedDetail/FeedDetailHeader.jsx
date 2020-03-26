@@ -8,7 +8,7 @@ import {
 } from './Styles';
 import Like from '../Like';
 
-const FeedDetailHeader = ({ feed, setFeedLike, feedId, feeds }) => {
+const FeedDetailHeader = React.memo(({ feed, setFeedLike, feedId, feeds }) => {
   // function likeToggle({ target }) {
   //   if (target.tagName !== 'DIV') {
   //     if (feed.like) {
@@ -35,6 +35,6 @@ const FeedDetailHeader = ({ feed, setFeedLike, feedId, feeds }) => {
       </StyledLikeArea> */}
     </header>
   );
-};
+});
 
 export default FeedDetailHeader;
