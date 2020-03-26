@@ -114,3 +114,10 @@
   - [FeedComment](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a6)
   - [FeedCommentContent.jsx](https://github.com/HYEOK999/d-code-feed/blob/master/Day5.md#a7)
 
+<br/>
+
+### [추가 시나리오 : 목록에서 '좋아요' 기능 추가 및 프로퍼티 키 변경 해결하기]
+
+**목차**
+
+- 
