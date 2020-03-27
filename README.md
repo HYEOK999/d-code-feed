@@ -116,8 +116,12 @@
 
 <br/>
 
-### [추가 시나리오 : 목록에서 '좋아요' 기능 추가 및 프로퍼티 키 변경 해결하기]
+### [추가 시나리오 : 목록에서 '좋아요' 기능 추가 및 프로퍼티 키 변경 해결하기](https://github.com/HYEOK999/d-code-feed/blob/master/AddScenario.md)
 
 **목차**
 
-- 
+- [시나리오 : 목록에서 '좋아요' 기능 추가](https://github.com/HYEOK999/d-code-feed/blob/day6/AddScenario.md#a1)
+- [최적화 적용](https://github.com/HYEOK999/d-code-feed/blob/day6/AddScenario.md#a2)
+- [일부 `key` 변경하기](https://github.com/HYEOK999/d-code-feed/blob/day6/AddScenario.md#a3)
+- [시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우](https://github.com/HYEOK999/d-code-feed/blob/day6/AddScenario.md#a4)
+

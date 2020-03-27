@@ -4,14 +4,14 @@
 
 **목차**
 
-- 시나리오 : 목록에서 '좋아요' 기능 추가 
-- 최적화 적용
-- 일부 `key` 변경하기
-- 시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우 
+- [시나리오 : 목록에서 '좋아요' 기능 추가](#a1)
+- [최적화 적용](#a2)
+- [일부 `key` 변경하기](#a3)
+- [시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우](#a4)
 
 ---
 
-### 목록에서 '좋아요' 기능 추가 + 최적화
+### 목록에서 '좋아요' 기능 추가 + 최적화 <a id="a1"></a>
 
 - 기존에 `FeedDetail` 에 있던 `좋아요` 기능을 공용으로 사용 가능하도록 별도의 컴포넌트로 생성합니다.
 - `FeedDetail` 에서 사용되던 좋아요 관련 로직을 각각의 Container에서 행해야 합니다.
@@ -20,7 +20,7 @@
 
 <br/>
 
-####좋아요 기능을 다루는 컴포넌트 추가하기
+####좋아요 기능을 다루는 컴포넌트 추가하기 
 
 > 위치 : src/components/Like.jsx
 
@@ -337,7 +337,7 @@ export default feed;
 
 <br/>
 
-### 최적화 적용
+### 최적화 적용 <a id="a2"></a>
 
 각각의 컴포넌트에 `React.memo()`를 추가합니다.
 
@@ -367,7 +367,7 @@ const 컴포넌트명 = React.memo(() => {
 
 
 
-### 일부 key 변경
+### 일부 key 변경 <a id="a3"></a>
 
 - 기존에는 전부 `uuid`로 `key` 를 지정했지만, `key` 값을 매번 임의생성되는 값으로 설정하면 리렌더링시 렌더링 최적화를 이룰 수 없는 문제로 인하여 `key`를 각 리스트에 지정된 `Id`로 변경합니다.
 
@@ -427,7 +427,7 @@ export default FeedList;
 
 <br/>
 
-### 시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우
+### 시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우 <a id="a4"></a>
 
 > 위치 : src/redux/modules/feed.js
 
