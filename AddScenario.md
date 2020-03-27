@@ -364,3 +364,96 @@ const 컴포넌트명 = React.memo(() => {
 ```
 
 <br/>
+
+
+
+### 일부 key 변경
+
+- 기존에는 전부 `uuid`로 `key` 를 지정했지만, `key` 값을 매번 임의생성되는 값으로 설정하면 리렌더링시 렌더링 최적화를 이룰 수 없는 문제로 인하여 `key`를 각 리스트에 지정된 `Id`로 변경합니다.
+
+```jsx
+// src/components/FeedList/index.jsx
+
+import React, { useEffect } from 'react';
+import { StyledMain, StyledContent, StyledFeedArticle } from './Styles';
+import MainTitle from './MainTitle';
+import FeedHeader from './FeedHeader';
+import FeedContent from './FeedContent';
+import FeedFooter from './FeedFooter';
+import Like from '../Like';
+
+const FeedList = React.memo(({ feeds, loading, error, getFeed, setFeedLike }) => {
+  useEffect(() => {
+    if (!feeds) getFeed();
+  }, [feeds, getFeed]);
+
+  return (
+    <StyledMain>
+      <MainTitle />
+      <StyledContent>
+        {feeds &&
+          feeds.list.map(feed => (
+            <StyledFeedArticle key={feed.id}> // 이부분
+              <FeedHeader tags={feed.tags} />
+              <FeedContent
+                id={feed.id}
+                url={feed.mediaList[0].url}
+                tags={feed.tags}
+                text={feed.text}
+              />
+              <Like
+                feed={feed}
+                feeds={feeds}
+                feedId={feed.id}
+                setFeedLike={setFeedLike}
+                list={true}
+              />
+              <FeedFooter
+                mdThumb={feed.mdInfo.mdThumb}
+                mdName={feed.mdInfo.mdName}
+                createdAt={feed.createdAt.split(' ')[0]}
+                id={feed.id}
+                count={[feed.likedCount, feed.replyCount, feed.sharedCount]}
+              />
+            </StyledFeedArticle>
+          ))}
+      </StyledContent>
+    </StyledMain>
+  );
+});
+
+export default FeedList;
+```
+
+<br/>
+
+### 시나리오 : FEED 데이터 중 sharedCount -> sCount로 변경될 경우
+
+> 위치 : src/redux/modules/feed.js
+
+```jsx
+// src/redux/modules/feed.js
+
+SUCCESS_LIST: (state, action) => ({
+      ...state,
+      feeds: {
+        ...action.payload.feeds,
+        list: action.payload.feeds.list.map(feedList => {
+          // 분리작업
+          const {
+            [feedList.sCount || feedList.sharedCount]: renameSharedCount,
+            ...feed
+          } = feedList;
+
+          return {
+            ...feed,
+            sharedCount: renameSharedCount,
+            like: false,
+          };
+        }),
+      },
+      loading: false,
+      error: null,
+    }),
+```
+
